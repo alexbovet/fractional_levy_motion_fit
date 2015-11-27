@@ -106,7 +106,6 @@ figure;
 plot(t,vars)
 figure
 loglog(t,vars)
-efmenu
 
 %% s-th moment
 clear mom mom0
@@ -123,24 +122,4 @@ figure;
 plot(t-t0,mom-mom0)
 figure
 loglog(t-t0,mom-mom0)
-efmenu
 
-%% write the profiles to dat files
-
-path='/home/abovet/fractopt/alex/nf2013/testcases/alex_propa_with_init/';
-
-fid = fopen([path 'dataset_test_alpha1p5_beta1_k0p1_initial.dat'],'w');
-for i=1:length(x)
-    data=[x(i);n0(i)];
-    fprintf(fid,'%6.4f  %8.4f\n',data);
-end
-fclose(fid);
-
-for j=1:length(t)
-    fid = fopen([path 'dataset_test_alpha1p5_beta1_k0p1' num2str(j) '.dat'],'w');
-    for i=1:length(x)
-        data=[x(i);n_c(i,j)];
-        fprintf(fid,'%6.4f  %8.4f\n',data);
-    end
-    fclose(fid);
-end
